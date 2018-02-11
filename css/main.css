@@ -1,0 +1,92 @@
+.letter-container.letter-g .fold-wrapper .shadow, .letter-container.letter-d .fold-wrapper .shadow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -1; }
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  text-align: center;
+  background-color: #000;
+  padding-top: 50px;
+  overflow: hidden; }
+
+.logo-container {
+  position: relative;
+  display: block;
+  height: 160px;
+  width: 320px;
+  margin: 0 auto;
+  animation-duration: 3000ms;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation-iteration-count: infinite;
+  animation-delay: 700ms;
+  animation-name: infinite-spinning; }
+
+.letter-container {
+  position: relative;
+  display: inline-block;
+  padding: 0 45px; }
+  .letter-container .front {
+    background-color: #424242;
+    z-index: 2; }
+  .letter-container.letter-g .upper-wrapper .front {
+    width: 45px;
+    height: 80px;
+    -webkit-transform: skew(-45deg);
+    -moz-transform: skew(-45deg);
+    -o-transform: skew(-45deg);
+    background: #424242; }
+  .letter-container.letter-g .bottom-wrapper .front {
+    width: 45px;
+    height: 80px;
+    -webkit-transform: skew(45deg);
+    -moz-transform: skew(45deg);
+    -o-transform: skew(45deg);
+    background: #424242; }
+  .letter-container.letter-g .fold-wrapper .shadow {
+    bottom: 0;
+    right: 5px;
+    border-bottom: 40px solid #212121;
+    border-right: 30px solid transparent; }
+  .letter-container.letter-g .fold-wrapper .item {
+    position: absolute;
+    width: 30px;
+    height: 80px;
+    background: #BDBDBD;
+    bottom: 0;
+    right: 5px;
+    z-index: -2; }
+  .letter-container.letter-d .upper-wrapper {
+    width: 45px;
+    height: 80px;
+    -webkit-transform: skew(45deg);
+    -moz-transform: skew(45deg);
+    -o-transform: skew(45deg);
+    background: #424242; }
+  .letter-container.letter-d .bottom-wrapper {
+    width: 45px;
+    height: 80px;
+    -webkit-transform: skew(-45deg);
+    -moz-transform: skew(-45deg);
+    -o-transform: skew(-45deg);
+    background: #424242; }
+  .letter-container.letter-d .fold-wrapper .shadow {
+    top: 0;
+    left: 5px;
+    border-top: 40px solid #212121;
+    border-left: 30px solid transparent; }
+  .letter-container.letter-d .fold-wrapper .item {
+    position: absolute;
+    width: 30px;
+    height: 80px;
+    background: #BDBDBD;
+    top: 0;
+    left: 5px;
+    z-index: -2; }
+
+@keyframes infinite-spinning {
+  0%, 75% {
+    transform: rotate(0deg); }
+  75%, 100% {
+    transform: rotate(180deg); } }

@@ -1,0 +1,127 @@
+$itemHeight: 80px;
+$loaderDelay : 700;
+$loaderDuration : 3000;
+$animationTiming: cubic-bezier(.645, .045, .355, 1);
+
+$primary: #424242;
+$secondary: #BDBDBD;
+$shadow: #212121;
+
+@mixin skewedPiece($degree) {
+	width: $itemHeight * 0.5625; //56.25% of height
+	height: $itemHeight;
+	-webkit-transform: skew($degree);
+	   -moz-transform: skew($degree);
+	     -o-transform: skew($degree);
+	background: $primary;
+}
+@mixin vertPiece() {
+	width: $itemHeight * 0.375; //37.5% of height
+	height: $itemHeight;
+	background: $secondary;
+}
+
+%vertPieceShadow{
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -1;
+}
+
+// HTML
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  text-align: center;
+  background-color: #000;
+  padding-top: 50px;
+  overflow: hidden;
+}
+
+.logo-container {
+  position: relative;
+  display: block;
+  height: $itemHeight * 2;
+  width: $itemHeight * 4; // 350% of height
+  margin: 0 auto;
+
+  animation-duration: $loaderDuration + ms;
+  animation-timing-function: $animationTiming;
+  animation-iteration-count: infinite;
+  animation-delay: $loaderDelay + ms;
+
+  animation-name: infinite-spinning;
+
+}
+.letter-container {
+  position: relative;
+  display: inline-block;
+  padding: 0 ($itemHeight * 0.5625);
+  .front {
+    background-color: $primary;
+    z-index: 2;
+  }
+  &.letter-g {
+    .upper-wrapper {
+      .front {
+        @include skewedPiece(-45deg);
+      }
+    }
+    .bottom-wrapper {
+      .front {
+        @include skewedPiece(45deg);
+      }
+    }
+    .fold-wrapper {
+      .shadow {
+        @extend %vertPieceShadow;
+        bottom: 0;
+        right: ($itemHeight * 0.0625);
+        border-bottom: ($itemHeight / 2) solid $shadow;
+        border-right: ($itemHeight * 0.375) solid transparent;
+      }
+      .item {
+        position: absolute;
+        @include vertPiece();
+        bottom: 0;
+        right: ($itemHeight * 0.0625);
+        z-index: -2;
+      }
+    }
+  }
+  &.letter-d {
+    .upper-wrapper {
+        @include skewedPiece(45deg);
+    }
+    .bottom-wrapper {
+        @include skewedPiece(-45deg);
+    }
+    .fold-wrapper {
+      .shadow {
+        @extend %vertPieceShadow;
+        top: 0;
+        left: ($itemHeight * 0.0625);
+        border-top: ($itemHeight / 2) solid $shadow;
+        border-left: ($itemHeight * 0.375) solid transparent;
+      }
+      .item {
+        position: absolute;
+        @include vertPiece();
+        top: 0;
+        left: ($itemHeight * 0.0625);
+        z-index: -2;
+      }
+    }
+  }
+}
+
+// KEYFRAMES
+
+@keyframes infinite-spinning {
+  0%, 75% {
+    transform: rotate(0deg);
+  }
+  75%, 100% {
+    transform: rotate(180deg);
+  }
+}
