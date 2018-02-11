@@ -1,7 +1,7 @@
-# GDIDOK
-Spinning logo loader for personal portfolio website
+# Logo Loader
+##### Spinning logo loader for my portfolio website
 
-Used:
-CSS3
-HTML
-Gulp + BrowserSync
+**Techniques and Tools Used:**
+- SCSS/CSS3
+- HTML
+- Gulp + BrowserSync
